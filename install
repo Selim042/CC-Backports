@@ -30,7 +30,4 @@ for k,v in pairs(progs) do
   data.close()
 end
 
-for k,v in pairs(progs) do
-  shell.setAlias(k,"/progs/"..k)
-end
-shell.setAlias("ls","/progs/edit")
+os.reboot()
