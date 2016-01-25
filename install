@@ -35,4 +35,16 @@ for k,v in pairs(progs) do
   file.close()
 end
 
+local settingsFile = fs.open("/.settings")
+settingsFile.write(textutils.serialise({
+  [ "bios.use_multishell" ] = true,
+  [ "shell.autocomplete" ] = true,
+  [ "shell.allow_disk_startup" ] = not command,
+  [ "shell.allow_startup" ] = true,
+  [ "lua.autocomplete" ] = true,
+  [ "list.show_hidden" ] = false,
+  [ "edit.autocomplete" ] = true,
+}))
+settingsFile.close()
+
 os.reboot()
