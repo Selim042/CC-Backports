@@ -617,3 +617,9 @@ end
 if (settings.get("bios.use_multishell")) then
 	mulishell = nil
 end
+
+local progs = fs.list("/progs")
+for i=1, #progs do
+	shell.setAlias(progs[i], "/progs/"..progs[i])
+end
+shell.setAlias("ls", "/progs/"..progs[i])
