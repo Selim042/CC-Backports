@@ -1,0 +1,12 @@
+if (fs.exists("/startup")) then
+  local oldStart = fs.open("/startup",'r')
+end
+local newStart = fs.open("/startup",'w')
+local init = http.get("https://raw.githubusercontent.com/Selim042/CC-Backports/master/init")
+newStart.write(init.readAll())
+if (oldStart ~= nil) then
+  newStart.write(oldStart.readAll())
+  oldStart.close()
+end
+newStart.close()
+init.close()
