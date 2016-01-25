@@ -25,9 +25,13 @@ end
 for k,v in pairs(progs) do
   local file = fs.open("/progs/"..k,'w')
   local data = http.get(v)
-  file.write(data.readAll())
+  if (data == nil) then
+    error("could not download "..k)
+  else
+    file.write(data.readAll())
+    data.close()
+  end
   file.close()
-  data.close()
 end
 
 os.reboot()
