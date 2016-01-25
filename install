@@ -1,3 +1,4 @@
+--[[ Add back-port initialization before startup ]]--
 if (fs.exists("/startup")) then
   local oldStart = fs.open("/startup",'r')
 end
@@ -10,3 +11,25 @@ if (oldStart ~= nil) then
 end
 newStart.close()
 init.close()
+
+--[[ Get updated version of programs that will use auto-completion and settings ]]--
+local progs = {
+  ['lua'] = "https://raw.githubusercontent.com/alekso56/ComputercraftLua/master/rom/programs/lua",
+  ['edit'] = "https://raw.githubusercontent.com/alekso56/ComputercraftLua/master/rom/programs/edit",
+  ['shell'] = "https://raw.githubusercontent.com/alekso56/ComputercraftLua/master/rom/programs/shell",
+  ['list'] = "https://raw.githubusercontent.com/alekso56/ComputercraftLua/master/rom/programs/list",
+}
+if (not fs.exists("/progs")) then
+  for k,v in pairs(progs) do
+    local file = fs.open("/progs/"..k,'w')
+    local data = http.get(v)
+    file.write(data.readAll())
+    file.close()
+    data.close()
+  end
+end
+
+for k,v in pairs(progs) do
+  shell.setAlias(k,"/progs/"..k)
+end
+shell.setAlias("ls","/progs/edit")
