@@ -602,7 +602,6 @@ else
 end
 
 --[[ Load settings ]]--
-print("\nLoading settings")
 if (settings.nbSettings) then
 	settings.load("/.settings")
 	if (#settings.getNames() == 0) then
