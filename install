@@ -18,6 +18,7 @@ local progs = {
   ['edit'] = "https://raw.githubusercontent.com/alekso56/ComputercraftLua/master/rom/programs/edit",
   ['shell'] = "https://raw.githubusercontent.com/alekso56/ComputercraftLua/master/rom/programs/shell",
   ['list'] = "https://raw.githubusercontent.com/alekso56/ComputercraftLua/master/rom/programs/list",
+  ['set'] = "https://raw.githubusercontent.com/alekso56/ComputercraftLua/master/rom/programs/set",
 }
 if (not fs.exists("/progs")) then
   fs.makeDir("/progs")
