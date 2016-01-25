@@ -20,13 +20,14 @@ local progs = {
   ['list'] = "https://raw.githubusercontent.com/alekso56/ComputercraftLua/master/rom/programs/list",
 }
 if (not fs.exists("/progs")) then
-  for k,v in pairs(progs) do
-    local file = fs.open("/progs/"..k,'w')
-    local data = http.get(v)
-    file.write(data.readAll())
-    file.close()
-    data.close()
-  end
+  fs.makeDir("/progs")
+end
+for k,v in pairs(progs) do
+  local file = fs.open("/progs/"..k,'w')
+  local data = http.get(v)
+  file.write(data.readAll())
+  file.close()
+  data.close()
 end
 
 for k,v in pairs(progs) do
