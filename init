@@ -511,7 +511,7 @@ if (_G.settings == nil) then
 	local tSettings = {}
 	
 	_G.settings = {}
-	function _G.set( sName, value )
+	function _G.settings.set( sName, value )
 	    if type(sName) ~= "string" or
 	       (type(value) ~= "string" and type(value) ~= "number" and type(value) ~= "boolean" and type(value) ~= "table") then
 	        error( "Expected string, value", 2 )
@@ -536,7 +536,7 @@ if (_G.settings == nil) then
 	    end
 	end
 	
-	function _G.get( sName, default )
+	function _G.settings.get( sName, default )
 	    if type(sName) ~= "string" then
 	        error( "Expected string", 2 )
 	    end
@@ -548,7 +548,7 @@ if (_G.settings == nil) then
 	    end
 	end
 	
-	function _G.unset( sName )
+	function _G.settings.unset( sName )
 	    if type(sName) ~= "string" then
 	        error( "Expected string", 2 )
 	    end
@@ -559,7 +559,7 @@ if (_G.settings == nil) then
 	    tSettings = {}
 	end
 	
-	function _G.getNames()
+	function _G.settings.getNames()
 	    local result = {}
 	    for k,v in pairs( tSettings ) do
 	        result[ #result + 1 ] = k
@@ -567,7 +567,7 @@ if (_G.settings == nil) then
 	    return result
 	end
 	
-	function _G.load( sPath )
+	function _G.settings.load( sPath )
 	    if type(sPath) ~= "string" then
 	        error( "Expected string", 2 )
 	    end
@@ -588,7 +588,7 @@ if (_G.settings == nil) then
 	    end
 	end
 	
-	function _G.save( sPath )
+	function _G.settings.save( sPath )
 	    if type(sPath) ~= "string" then
 	        error( "Expected string", 2 )
 	    end
