@@ -1,4 +1,6 @@
 if not (fs.complete or shell.complete or textutils.complete) then
+	_G.load = loadstring
+	
 	_G._NBCOMPLETE = true
 	--[[ Read function from 1.78 ]]--
 	function _G.read( _sReplaceChar, _tHistory, _fnComplete )
