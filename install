@@ -35,7 +35,7 @@ for k,v in pairs(progs) do
   file.close()
 end
 
-local settingsFile = fs.open("/.settings")
+local settingsFile = fs.open("/.settings",'w')
 settingsFile.write(textutils.serialise({
   [ "bios.use_multishell" ] = true,
   [ "shell.autocomplete" ] = true,
