@@ -510,7 +510,9 @@ end
 if (_G.settings == nil) then
 	nbSettings = true
 	
-	local tSettings = {}
+	local settingsFile = fs.open("/.settings",'r')
+	local tSettings = textutils.unserialise(settingsFile.readAll())
+	settingsFile.close()
 	
 	_G.settings = {}
 	function _G.settings.set( sName, value )
@@ -616,7 +618,7 @@ if (settings.nbSettings) then
 	end
 end
 if (settings.get("bios.use_multishell")) then
-	mulishell = nil
+	multishell = nil
 end
 
 local progs = fs.list("/progs")
